@@ -4,7 +4,7 @@ title: "RCMS v1.0 Reproducibility Package: Ransomware Cryptographic Metadata Sch
 version: 1.0.0
 date-released: 2026-10-23
 license: MIT
-repository-code: "https://github.com/[USER]/rcms-reproducibility"
+repository-code: "https://github.com/iouun77/rcms_reproducibility"
 authors:
   - family-names: "[Family name]"
     given-names: "[Given name]"

@@ -1,5 +1,8 @@
 # RCMS v1.0 Reproducibility Package
 
+Repository: https://github.com/iouun77/rcms_reproducibility  
+Zenodo DOI: _to be assigned at release v1.0.0_
+
 ## Reproduce (executable verification)
 ```
 cd scripts
