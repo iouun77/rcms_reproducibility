@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this package, please cite the paper and this repository."
+title: "RCMS v1.0 Reproducibility Package: Ransomware Cryptographic Metadata Schema"
+version: 1.0.0
+date-released: 2026-10-23
+license: MIT
+repository-code: "https://github.com/[USER]/rcms-reproducibility"
+authors:
+  - family-names: "[Family name]"
+    given-names: "[Given name]"
+    affiliation: "Korea Internet & Security Agency (KISA)"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+keywords:
+  - ransomware
+  - cryptography
+  - metadata schema
+  - STIX 2.1
+  - recoverability
+preferred-citation:
+  type: article
+  title: "RCMS: Defining a Ransomware-Native Metadata Schema for Cryptographic Behavior"
+  journal: "IEEE Access"
+  year: 2026
+  authors:
+    - family-names: "[Family name]"
+      given-names: "[Given name]"

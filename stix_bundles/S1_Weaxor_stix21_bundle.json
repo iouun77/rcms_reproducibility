@@ -1,0 +1,201 @@
+{
+  "type": "bundle",
+  "id": "bundle--fa4d033e-5473-5bbf-9ea2-680212cd9464",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--d3a8feaa-c1ea-5474-a5bf-b6452352ab7a",
+      "created": "2026-10-23T00:00:00.000Z",
+      "modified": "2026-10-23T00:00:00.000Z",
+      "name": "RCMS pilot (static-only)",
+      "identity_class": "individual"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--ff37d937-dae2-58f9-b44b-2f4cc35e5518",
+      "created": "2026-10-23T00:00:00.000Z",
+      "modified": "2026-10-23T00:00:00.000Z",
+      "name": "Weaxor",
+      "is_family": true,
+      "first_seen": "2024-05-01",
+      "extensions": {
+        "extension-definition--3eb39a3e-9c45-5adb-ba1c-997ad6ad2b69": {
+          "extension_type": "property-extension",
+          "meta_schema_version": "RCMS-1.0",
+          "meta_record_id": "S1",
+          "meta_source_dataset": "user-provided sample + victim ciphertext pair",
+          "sample_target_platform": "Windows",
+          "family_confidence": "High",
+          "family_variant": "Undetermined",
+          "family_builder_lineage": "Not-Analyzed",
+          "family_timeline_evidence": "public-report"
+        }
+      }
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--266317d5-8f5a-52d7-91b6-3752c5a4466c",
+      "created": "2026-10-23T00:00:00.000Z",
+      "modified": "2026-10-23T00:00:00.000Z",
+      "pattern_type": "stix",
+      "pattern": "[file:hashes.'SHA-256' = '68ed5653c98d24a6712a70f6853310c711cfabd7f78c52b6ac084dc709cca59d']",
+      "valid_from": "2026-10-23T00:00:00.000Z"
+    },
+    {
+      "type": "file",
+      "spec_version": "2.1",
+      "id": "file--9419748f-704a-5f34-88b0-cb16290e40ef",
+      "hashes": {
+        "SHA-256": "68ed5653c98d24a6712a70f6853310c711cfabd7f78c52b6ac084dc709cca59d",
+        "MD5": "6a5d4f900d81ab35c7752f59d6101e0a"
+      },
+      "extensions": {
+        "extension-definition--3eb39a3e-9c45-5adb-ba1c-997ad6ad2b69": {
+          "extension_type": "property-extension",
+          "sample_file_type": "PE",
+          "sample_target_platform": "Windows",
+          "sample_hash_import_hash": "f55b0b1d545b6d62afa8dc2fb33c6a1d",
+          "sample_compile_timestamp": "2026-04-21T23:12:34Z"
+        }
+      }
+    },
+    {
+      "type": "artifact",
+      "spec_version": "2.1",
+      "id": "artifact--af9febfc-dff1-51fa-84c1-b2ef122e265d",
+      "mime_type": "application/octet-stream",
+      "hashes": {
+        "SHA-256": "68ed5653c98d24a6712a70f6853310c711cfabd7f78c52b6ac084dc709cca59d"
+      },
+      "extensions": {
+        "extension-definition--3eb39a3e-9c45-5adb-ba1c-997ad6ad2b69": {
+          "extension_type": "property-extension",
+          "crypto_symmetric_algorithm": "[\"ChaCha20\", \"AES\"]",
+          "crypto_symmetric_key_size": "256",
+          "weakness_weak_rng_detected": "No",
+          "weakness_predictable_seed_detected": "No",
+          "weakness_hardcoded_key_detected": "No"
+        }
+      }
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
+      "id": "note--77855177-8eee-5238-ab07-e7c34bcfec07",
+      "created": "2026-10-23T00:00:00.000Z",
+      "modified": "2026-10-23T00:00:00.000Z",
+      "content": "Ransom note file: RECOVERY INFORMATION.txt",
+      "object_refs": [
+        "malware--ff37d937-dae2-58f9-b44b-2f4cc35e5518"
+      ],
+      "extensions": {
+        "extension-definition--3eb39a3e-9c45-5adb-ba1c-997ad6ad2b69": {
+          "extension_type": "property-extension",
+          "ransom_note_present": "Yes",
+          "ransom_note_language": "EN",
+          "ransom_note_template_id": "Undetermined",
+          "payment_contact": "datahelper@cyberfear.com",
+          "payment_method": "Undetermined",
+          "payment_victim_id_present": "Yes",
+          "payment_victim_id_format": "Undetermined"
+        }
+      }
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--9a9862a4-e5db-5112-ae10-69d92f35d849",
+      "created": "2026-10-23T00:00:00.000Z",
+      "modified": "2026-10-23T00:00:00.000Z",
+      "name": "Inhibit System Recovery",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1490"
+        }
+      ],
+      "extensions": {
+        "extension-definition--3eb39a3e-9c45-5adb-ba1c-997ad6ad2b69": {
+          "extension_type": "property-extension",
+          "impact_shadow_copy_deletion": "Undetermined",
+          "impact_backup_deletion": "Undetermined",
+          "impact_process_termination": "Yes",
+          "impact_event_log_deletion": "Yes",
+          "impact_service_termination": "Yes",
+          "impact_safe_mode_modification": "Undetermined"
+        }
+      }
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--b2b5086c-3cfa-5da6-b74a-78fa75568e3b",
+      "created": "2026-10-23T00:00:00.000Z",
+      "modified": "2026-10-23T00:00:00.000Z",
+      "name": "Lateral Movement",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1021"
+        }
+      ],
+      "extensions": {
+        "extension-definition--3eb39a3e-9c45-5adb-ba1c-997ad6ad2b69": {
+          "extension_type": "property-extension",
+          "impact_lateral_movement_present": "Undetermined",
+          "impact_smb_present": "Undetermined",
+          "impact_psexec_present": "Undetermined",
+          "impact_worm_capability_present": "Undetermined",
+          "impact_active_directory_enumeration": "Undetermined"
+        }
+      }
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d18eb8f7-12c5-592c-9374-a56703a0d883",
+      "created": "2026-10-23T00:00:00.000Z",
+      "modified": "2026-10-23T00:00:00.000Z",
+      "relationship_type": "indicates",
+      "source_ref": "indicator--266317d5-8f5a-52d7-91b6-3752c5a4466c",
+      "target_ref": "malware--ff37d937-dae2-58f9-b44b-2f4cc35e5518"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--2f3567b7-ba49-503d-b7df-ca4e31f58744",
+      "created": "2026-10-23T00:00:00.000Z",
+      "modified": "2026-10-23T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "malware--ff37d937-dae2-58f9-b44b-2f4cc35e5518",
+      "target_ref": "attack-pattern--9a9862a4-e5db-5112-ae10-69d92f35d849"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--16771b49-a3b9-5e77-8be0-693f2cf39ffc",
+      "created": "2026-10-23T00:00:00.000Z",
+      "modified": "2026-10-23T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "malware--ff37d937-dae2-58f9-b44b-2f4cc35e5518",
+      "target_ref": "attack-pattern--b2b5086c-3cfa-5da6-b74a-78fa75568e3b"
+    },
+    {
+      "type": "extension-definition",
+      "spec_version": "2.1",
+      "id": "extension-definition--3eb39a3e-9c45-5adb-ba1c-997ad6ad2b69",
+      "created": "2026-10-23T00:00:00.000Z",
+      "modified": "2026-10-23T00:00:00.000Z",
+      "created_by_ref": "identity--d3a8feaa-c1ea-5474-a5bf-b6452352ab7a",
+      "name": "RCMS v1.0 property extension",
+      "schema": "https://example.org/rcms/v1.0/schema.json",
+      "version": "1.0",
+      "extension_types": [
+        "property-extension"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "E1_schema_validity": {
+    "checked": 2559,
+    "initial_enum_violations": 6,
+    "after_fix_pass": "100%",
+    "note": "24 records validated against type/enum/gate constraints; 6 enum violations detected and fixed"
+  },
+  "E2_rule_soundness": {
+    "tests": 20,
+    "passed": 20,
+    "cases": [
+      "prerequisite-unmet key-reuse (Partial)",
+      "threshold boundaries 40/41/64/65",
+      "keyspace=0",
+      "conflicting priority input",
+      "undetermined input (safe hold)"
+    ]
+  },
+  "E5_task_based_ablation": {
+    "T1_reproduce_judgment": {
+      "core": 24,
+      "ext": 24
+    },
+    "T3_family_attribution": {
+      "core": 0,
+      "ext": 24
+    },
+    "T4_evidence_provenance": {
+      "core": 0,
+      "ext": 24
+    },
+    "T5_victim_behavior_id": {
+      "core": 0,
+      "ext": 22
+    },
+    "note": "recovery judgment reproducible with Core; traceability/attribution/provenance require Extended"
+  }
+}

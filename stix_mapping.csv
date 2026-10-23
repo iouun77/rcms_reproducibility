@@ -1,0 +1,109 @@
+field,layer,stix_object,stix_property,mbc_identifier,coverage,classification_rationale
+meta.schema.version,L1,x-rcms-metadata,spec_version,,Extension-Required,requires custom extension (non-standard object/property)
+meta.record.id,L1,x-rcms-record,id,,Extension-Required,requires custom extension (non-standard object/property)
+meta.analysis.performer,L1,identity,name,,Native,conditional 1:1 mapping: requires modeling the analyst as a STIX Identity object; free-text tool names fall outside this mapping
+meta.source.dataset,L1,identity,x_dataset,,Extension-Required,requires custom extension (non-standard object/property)
+evidence.source,L1,identity,name,,Extension-Required,evidence source TYPE (Literature/This-Study/Vendor) is not semantically equal to identity:name; requires extension
+evidence.artifacts,L1,observed-data,objects,,Extension-Required,"observed-data:objects is a set of observed STIX objects, not an analysis-artifact list; semantics differ"
+sample.hash.sha256,L1,file,hashes.'SHA-256',,Native,"direct 1:1 mapping, meaning preserved (file:hashes.'SHA-256')"
+sample.file.type,L1,file,magic_number_hex,,Extension-Required,"file:magic_number_hex captures magic bytes, not the PE/ELF file-type semantics; requires extension"
+sample.target.platform,L1,file,x_target_platform,,Extension-Required,requires custom extension (non-standard object/property)
+sample.hash.md5,L1,file,hashes.MD5,,Native,"direct 1:1 mapping, meaning preserved (file:hashes.MD5)"
+sample.hash.import_hash,L1,file,hashes.x_imphash,,Extension-Required,requires custom extension (non-standard object/property)
+sample.compile.timestamp,L1,custom-ext,x_rcms_*,,Extension-Required,serializable only via custom extension; no standard property
+sample.packer.name,L1,custom-ext,x_rcms_*,,Extension-Required,serializable only via custom extension; no standard property
+ransom_note.present,L1,custom-ext,x_rcms_*,,Extension-Required,serializable only via custom extension; no standard property
+ransom_note.file.name,L1,file,name,,Native,"direct 1:1 mapping, meaning preserved (file:name)"
+ransom_note.file.hash,L1,file,hashes.'SHA-256',,Native,"direct 1:1 mapping, meaning preserved (file:hashes.'SHA-256')"
+ransom_note.language,L1,custom-ext,x_rcms_*,,Extension-Required,serializable only via custom extension; no standard property
+ransom_note.template.id,L1,custom-ext,x_rcms_*,,Extension-Required,serializable only via custom extension; no standard property
+payment.contact,L1,custom-ext,x_rcms_*,,Extension-Required,serializable only via custom extension; no standard property
+payment.method,L1,custom-ext,x_rcms_*,,Extension-Required,serializable only via custom extension; no standard property
+payment.victim_id.present,L1,custom-ext,x_rcms_*,,Extension-Required,serializable only via custom extension; no standard property
+payment.victim_id.format,L1,custom-ext,x_rcms_*,,Extension-Required,serializable only via custom extension; no standard property
+payment.negotiation.channel,L1,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+payment.tor_site.present,L1,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+decryptor.public.present,L1,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+decryptor.public.reference,L1,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+decryptor.public.type,L1,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+decryptor.public.availability,L1,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+target.file_extension.included,L2,custom-ext,x_rcms_*,,Extension-Required,serializable only via custom extension; no standard property
+target.file_extension.excluded,L2,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+target.file_extension.policy,L2,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+target.directory.included,L2,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+target.directory.excluded,L2,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+target.network_share.targeted,L2,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+target.removable_media.targeted,L2,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+target.virtual_machine.targeted,L2,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+impact.shadow_copy.deletion,L2,attack-pattern,external_references:T1490,,Extension-Required,"ATT&CK technique can be referenced, but per-sample present=Yes/No requires sighting/relationship + extension (not a native boolean property)"
+impact.backup.deletion,L2,attack-pattern,external_references:T1490,,Extension-Required,"ATT&CK technique can be referenced, but per-sample present=Yes/No requires sighting/relationship + extension (not a native boolean property)"
+impact.process.termination,L2,attack-pattern,external_references:T1489,,Extension-Required,"ATT&CK technique can be referenced, but per-sample present=Yes/No requires sighting/relationship + extension (not a native boolean property)"
+impact.event_log.deletion,L2,attack-pattern,external_references:T1070.001,,Extension-Required,"ATT&CK technique can be referenced, but per-sample present=Yes/No requires sighting/relationship + extension (not a native boolean property)"
+impact.service.termination,L2,attack-pattern,external_references:T1489,,Extension-Required,"ATT&CK technique can be referenced, but per-sample present=Yes/No requires sighting/relationship + extension (not a native boolean property)"
+impact.safe_mode.modification,L2,attack-pattern,external_references:T1562.009,,Extension-Required,"ATT&CK technique can be referenced, but per-sample present=Yes/No requires sighting/relationship + extension (not a native boolean property)"
+impact.lateral_movement.present,L2,attack-pattern,external_references:T1021,,Extension-Required,"ATT&CK technique can be referenced, but per-sample present=Yes/No requires sighting/relationship + extension (not a native boolean property)"
+impact.smb.present,L2,attack-pattern,external_references:T1021.002,,Extension-Required,"ATT&CK technique can be referenced, but per-sample present=Yes/No requires sighting/relationship + extension (not a native boolean property)"
+impact.psexec.present,L2,attack-pattern,external_references:S0029,,Extension-Required,"ATT&CK technique can be referenced, but per-sample present=Yes/No requires sighting/relationship + extension (not a native boolean property)"
+impact.active_directory.enumeration,L2,attack-pattern,external_references:T1087.002,,Extension-Required,"ATT&CK technique can be referenced, but per-sample present=Yes/No requires sighting/relationship + extension (not a native boolean property)"
+impact.worm_capability.present,L2,attack-pattern,external_references:T1210,,Extension-Required,"ATT&CK technique can be referenced, but per-sample present=Yes/No requires sighting/relationship + extension (not a native boolean property)"
+crypto.symmetric.algorithm,L3,custom-ext,x_rcms_*,C0027,Extension-Required,tagged by MBC micro-objective (presence only); shifts from No-Mapping under STIX+MBC
+crypto.symmetric.key_size,L3,custom-ext,x_rcms_*,,Extension-Required,serializable only via custom extension; no standard property
+crypto.symmetric.block_mode,L3,,,,No Standard Semantic Mapping,"MBC C0027 tags presence only (STIX+MBC), no standard semantic property"
+crypto.asymmetric.algorithm,L3,,,,No Standard Semantic Mapping,"MBC C0028 tags presence only (STIX+MBC), no standard semantic property"
+crypto.asymmetric.key_size,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.scheme.architecture,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.workflow.type,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.custom_implementation.present,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.library.name,L3,,,,No Standard Semantic Mapping,"MBC C0059 tags presence only (STIX+MBC), no standard semantic property"
+crypto.random_number_generator.source,L3,,,C0021,No Standard Semantic Mapping,tagged by MBC micro-objective (presence only); shifts from No-Mapping under STIX+MBC
+crypto.random_number_generator.seed_source,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.random_number_generator.algorithm,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.random_number_generator.applied_to,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.random_number_generator.function,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.random_number_generator.reseeding,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.key.scope,L3,,,C0028,No Standard Semantic Mapping,tagged by MBC micro-objective (presence only); shifts from No-Mapping under STIX+MBC
+crypto.key.wrapping,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.key.reuse,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.key.generation_function,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.key.wrapping_sequence,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.key.storage_location,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.session_key.generation,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.file_key.present,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.victim_key.present,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.iv.method,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.iv.function,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.iv.storage_location,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.kdf.present,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.kdf.algorithm,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.kdf.iteration_count,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.kdf.salt_source,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.kdf.output_size,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.encryption.extent,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.encryption.size_policy,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.file_marker.pattern,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.original_size.preserved,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.metadata.storage_location,L3,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+family.name,L4,malware,name,,Native,"direct 1:1 mapping, meaning preserved (malware:name)"
+family.confidence,L4,custom-ext,x_rcms_*,,Extension-Required,serializable only via custom extension; no standard property
+family.variant,L4,malware,aliases,,Extension-Required,"malware:aliases are alternate names, not variant identifiers; semantics differ"
+family.builder.lineage,L4,custom-ext,x_rcms_*,,Extension-Required,serializable only via custom extension; no standard property
+family.timeline.first_seen,L4,malware,first_seen,,Native,"direct 1:1 mapping, meaning preserved (malware:first_seen)"
+family.timeline.evidence,L4,custom-ext,x_rcms_*,,Extension-Required,serializable only via custom extension; no standard property
+weakness.weak_rng.detected,L4,custom-ext,x_rcms_*,,Extension-Required,serializable only via custom extension; no standard property
+weakness.predictable_seed.detected,L4,custom-ext,x_rcms_*,,Extension-Required,serializable only via custom extension; no standard property
+weakness.hardcoded_key.detected,L4,custom-ext,x_rcms_*,,Extension-Required,serializable only via custom extension; no standard property
+weakness.static_iv.detected,L4,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+weakness.key_reuse.detected,L4,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+weakness.custom_implementation.risk_level,L4,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+crypto.known_plaintext.availability,L4,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+recovery.method.class,L4,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+recovery.method.required_artifacts,L4,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+recovery.method.required_conditions,L4,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+recovery.keyspace.exponent,L4,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+recovery.bruteforce.feasibility,L4,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+recovery.seed.feasibility,L4,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+recovery.assessment.class,L4,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+recovery.assessment.evidence_completeness,L4,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+recovery.assessment.confidence,L4,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+summary.verdict,L4,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier
+summary.key_findings,L4,,,,No Standard Semantic Mapping,no standard object/property or MBC identifier

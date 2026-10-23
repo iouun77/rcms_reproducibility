@@ -1,0 +1,71 @@
+{
+  "schema": "RCMS-1.0",
+  "method_class": {
+    "priority": [
+      "Hardcoded-Key",
+      "Key-Reuse",
+      "Weak-RNG",
+      "Memory-Key",
+      "Static-IV",
+      "None"
+    ],
+    "rules": {
+      "Hardcoded-Key": "weakness.hardcoded_key.detected == Yes",
+      "Key-Reuse": "weakness.key_reuse.detected == Yes (keystream reuse is the primary recovery path; takes precedence over Static-IV)",
+      "Weak-RNG": "weakness.weak_rng.detected == Yes OR weakness.predictable_seed.detected == Yes",
+      "Memory-Key": "candidate classification from required_artifacts mentioning memory/heap residue (observation of analysis condition); actual evidence is checked separately via required_conditions.no_reboot_heap_intact status, which decides Full vs Partial. NOT derived from recovery.method.class",
+      "Static-IV": "weakness.static_iv.detected == Yes AND NOT key_reuse (IV fixed without a direct key-reuse path)",
+      "None": "otherwise"
+    },
+    "note": "When both static_iv and key_reuse are observed, Key-Reuse is the operative recovery path and takes precedence. Memory-Key is recorded from runtime/forensic observation."
+  },
+  "prerequisites": {
+    "Hardcoded-Key": {
+      "file_encryption_key_verified": "status==Confirmed"
+    },
+    "Key-Reuse": {
+      "keystream_reuse_confirmed": "status==Confirmed",
+      "candidate_verifiable": "status==Confirmed"
+    },
+    "Static-IV": {
+      "keystream_reuse_confirmed": "status==Confirmed"
+    },
+    "Weak-RNG": {
+      "seed_observable": "status==Confirmed",
+      "candidate_verifiable": "status==Confirmed"
+    },
+    "Memory-Key": {
+      "no_reboot_heap_intact": "status==Confirmed"
+    },
+    "_note": "prerequisites are read from structured required_conditions object {condition:{status:Confirmed|Not-Confirmed|Undetermined}}, NOT from free-text substring matching"
+  },
+  "bruteforce_feasibility": {
+    "allowed": [
+      "Immediate",
+      "Conditional",
+      "No",
+      "Undetermined",
+      "Not-Analyzed"
+    ],
+    "rule": "keyspace in {Undetermined,Not-Analyzed,None} -> Undetermined; keyspace==0 -> No (recovery is via method, not keyspace brute-force; entropy value and brute-force applicability are separated); 0<keyspace<=40 -> Immediate; 40<keyspace<=64 -> Conditional; keyspace>64 -> No"
+  },
+  "assessment_class": {
+    "allowed": [
+      "Full",
+      "Partial",
+      "Keyspace-Reduced",
+      "Infeasible",
+      "Undetermined",
+      "Not-Analyzed"
+    ],
+    "rule": "if method != None: Full if all prerequisites of that method are met, else Partial; elif bruteforce==Conditional: Keyspace-Reduced; else: Infeasible",
+    "definitions": {
+      "Full": "theoretical recoverability under stated prerequisites (NOT demonstrated decryption)",
+      "Infeasible": "no known recovery path within observed scope (NOT proven mathematical impossibility)"
+    }
+  },
+  "known_plaintext_availability": {
+    "rule": "candidate_observed == Yes -> Yes; else Undetermined",
+    "cue_only": "encryption.extent in {Partial,Intermittent,Header-Only} AND ext.included == Yes is a search cue only; never yields Yes by itself"
+  }
+}

@@ -1,0 +1,1085 @@
+{
+  "schema": "RCMS-1.0",
+  "fields": [
+    {
+      "path": "meta.schema.version",
+      "layer": "L1",
+      "data_type": "string",
+      "allowed_values": "RCMS-1.0",
+      "requirement": "Required",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "스키마 버전"
+    },
+    {
+      "path": "meta.record.id",
+      "layer": "L1",
+      "data_type": "string",
+      "allowed_values": "UUID",
+      "requirement": "Required",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "레코드 식별자"
+    },
+    {
+      "path": "meta.analysis.performer",
+      "layer": "L1",
+      "data_type": "string",
+      "allowed_values": "free-text",
+      "requirement": "Required",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "분석 수행 주체"
+    },
+    {
+      "path": "meta.source.dataset",
+      "layer": "L1",
+      "data_type": "string",
+      "allowed_values": "free-text",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "출처 데이터셋"
+    },
+    {
+      "path": "evidence.source",
+      "layer": "L1",
+      "data_type": "enum",
+      "allowed_values": "Literature|This-Study|Vendor|Unverified",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "판정 근거 출처"
+    },
+    {
+      "path": "evidence.artifacts",
+      "layer": "L1",
+      "data_type": "list<string>",
+      "allowed_values": "json-array",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "판정 근거 아티팩트 목록"
+    },
+    {
+      "path": "sample.hash.sha256",
+      "layer": "L1",
+      "data_type": "string(64)",
+      "allowed_values": "SHA256",
+      "requirement": "Required",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "샘플 SHA-256 해시"
+    },
+    {
+      "path": "sample.file.type",
+      "layer": "L1",
+      "data_type": "enum",
+      "allowed_values": "PE|ELF|Mach-O|Script|Other|Undetermined|Not-Analyzed",
+      "requirement": "Required",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "샘플 파일 형식"
+    },
+    {
+      "path": "sample.target.platform",
+      "layer": "L1",
+      "data_type": "enum",
+      "allowed_values": "Windows|Linux|ESXi|macOS|Multi|Other|Undetermined|Not-Analyzed",
+      "requirement": "Required",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "실행 대상 플랫폼"
+    },
+    {
+      "path": "sample.hash.md5",
+      "layer": "L1",
+      "data_type": "string(32)",
+      "allowed_values": "MD5",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "샘플 MD5 해시"
+    },
+    {
+      "path": "sample.hash.import_hash",
+      "layer": "L1",
+      "data_type": "string",
+      "allowed_values": "IMPHASH",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "샘플 임포트 해시"
+    },
+    {
+      "path": "sample.compile.timestamp",
+      "layer": "L1",
+      "data_type": "datetime",
+      "allowed_values": "ISO8601",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "컴파일 타임스탬프"
+    },
+    {
+      "path": "sample.packer.name",
+      "layer": "L1",
+      "data_type": "enum",
+      "allowed_values": "None|UPX|Themida|Custom|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "패커 이름"
+    },
+    {
+      "path": "ransom_note.present",
+      "layer": "L1",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "랜섬노트 존재 여부"
+    },
+    {
+      "path": "ransom_note.file.name",
+      "layer": "L1",
+      "data_type": "string",
+      "allowed_values": "free-text|None",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "랜섬노트 파일명 (ransom_note.present=No 이면 None)"
+    },
+    {
+      "path": "ransom_note.file.hash",
+      "layer": "L1",
+      "data_type": "string",
+      "allowed_values": "SHA256|None",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "랜섬노트 파일 해시 (ransom_note.present=No 이면 None)"
+    },
+    {
+      "path": "ransom_note.language",
+      "layer": "L1",
+      "data_type": "enum",
+      "allowed_values": "EN|RU|CN|KR|Multi|None|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "랜섬노트 언어 (ransom_note.present=No 이면 None)"
+    },
+    {
+      "path": "ransom_note.template.id",
+      "layer": "L1",
+      "data_type": "string",
+      "allowed_values": "template-id|None",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "랜섬노트 템플릿 식별자 (ransom_note.present=No 이면 None)"
+    },
+    {
+      "path": "payment.contact",
+      "layer": "L1",
+      "data_type": "string",
+      "allowed_values": "email/tox/telegram",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "공격자 연락처"
+    },
+    {
+      "path": "payment.method",
+      "layer": "L1",
+      "data_type": "enum",
+      "allowed_values": "BTC|XMR|Other|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "요구 결제 수단"
+    },
+    {
+      "path": "payment.victim_id.present",
+      "layer": "L1",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "피해자 식별자 부여 여부"
+    },
+    {
+      "path": "payment.victim_id.format",
+      "layer": "L1",
+      "data_type": "enum",
+      "allowed_values": "UUID|Numeric|Base64|Custom|None|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "피해자 식별자 형식 (victim_id.present=No 이면 None)"
+    },
+    {
+      "path": "payment.negotiation.channel",
+      "layer": "L1",
+      "data_type": "enum",
+      "allowed_values": "Tor|Email|Tox|Telegram|Session|Signal|Matrix|Other|None|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "협상 채널 유형"
+    },
+    {
+      "path": "payment.tor_site.present",
+      "layer": "L1",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "Tor 협상 사이트 존재 여부"
+    },
+    {
+      "path": "decryptor.public.present",
+      "layer": "L1",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Conditional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "공개 복호화기 존재 여부"
+    },
+    {
+      "path": "decryptor.public.reference",
+      "layer": "L1",
+      "data_type": "string",
+      "allowed_values": "URL/Name|None",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "공개 복호화기 참조 링크 (decryptor.public.present=No 이면 None)"
+    },
+    {
+      "path": "decryptor.public.type",
+      "layer": "L1",
+      "data_type": "enum",
+      "allowed_values": "Public|Vendor|Research|Internal|None|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "공개 복호화기 제공 주체 (decryptor.public.present=No 이면 None)"
+    },
+    {
+      "path": "decryptor.public.availability",
+      "layer": "L1",
+      "data_type": "enum",
+      "allowed_values": "Available|Partial|Unavailable|None|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "공개 복호화기 가용성 (decryptor.public.present=No 이면 None)"
+    },
+    {
+      "path": "target.file_extension.included",
+      "layer": "L2",
+      "data_type": "list<string>",
+      "allowed_values": "json-array",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "암호화 대상 확장자 목록"
+    },
+    {
+      "path": "target.file_extension.excluded",
+      "layer": "L2",
+      "data_type": "list<string>",
+      "allowed_values": "json-array",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "암호화 제외 확장자 목록"
+    },
+    {
+      "path": "target.file_extension.policy",
+      "layer": "L2",
+      "data_type": "enum",
+      "allowed_values": "Include-Only|Exclude-Only|Both|None|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "추출한 확장자 목록의 역할(포함 목록인가 제외 목록인가)"
+    },
+    {
+      "path": "target.directory.included",
+      "layer": "L2",
+      "data_type": "list<string>",
+      "allowed_values": "json-array",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "암호화 대상 디렉터리 목록"
+    },
+    {
+      "path": "target.directory.excluded",
+      "layer": "L2",
+      "data_type": "list<string>",
+      "allowed_values": "json-array",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "암호화 제외 디렉터리 목록"
+    },
+    {
+      "path": "target.network_share.targeted",
+      "layer": "L2",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "네트워크 공유 암호화 여부"
+    },
+    {
+      "path": "target.removable_media.targeted",
+      "layer": "L2",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "이동식 매체 암호화 여부"
+    },
+    {
+      "path": "target.virtual_machine.targeted",
+      "layer": "L2",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "가상머신 파일 암호화 여부"
+    },
+    {
+      "path": "impact.shadow_copy.deletion",
+      "layer": "L2",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Conditional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "볼륨 섀도 복사본 삭제 여부(백업 삭제와 배타)"
+    },
+    {
+      "path": "impact.backup.deletion",
+      "layer": "L2",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Conditional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "섀도 복사본 외의 백업(백업 파일·카탈로그) 삭제 여부"
+    },
+    {
+      "path": "impact.process.termination",
+      "layer": "L2",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Conditional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "프로세스 강제 종료 여부"
+    },
+    {
+      "path": "impact.event_log.deletion",
+      "layer": "L2",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "이벤트 로그 삭제 여부"
+    },
+    {
+      "path": "impact.service.termination",
+      "layer": "L2",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "서비스 강제 종료 여부"
+    },
+    {
+      "path": "impact.safe_mode.modification",
+      "layer": "L2",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "안전모드 설정 변경 여부"
+    },
+    {
+      "path": "impact.lateral_movement.present",
+      "layer": "L2",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "원격 호스트로의 이동 시도 여부(수단 불문, 상위 개념)"
+    },
+    {
+      "path": "impact.smb.present",
+      "layer": "L2",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "SMB 를 이용한 원격 전파 여부(수평 이동의 하위 수단)"
+    },
+    {
+      "path": "impact.psexec.present",
+      "layer": "L2",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "PsExec 를 이용한 원격 실행 여부(수평 이동의 하위 수단)"
+    },
+    {
+      "path": "impact.active_directory.enumeration",
+      "layer": "L2",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "액티브 디렉터리 탐색 여부"
+    },
+    {
+      "path": "impact.worm_capability.present",
+      "layer": "L2",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "사용자 개입 없는 자동 자기전파 여부"
+    },
+    {
+      "path": "crypto.symmetric.algorithm",
+      "layer": "L3",
+      "data_type": "list<string>",
+      "allowed_values": "json-array of AES|ChaCha20|Salsa20|RC4|TEA|HC-128|Custom|Undetermined|Not-Analyzed",
+      "requirement": "Required",
+      "tier": "Core",
+      "derives_from": null,
+      "description": "대칭키 알고리즘 (복수 구현 시 모두 기재)"
+    },
+    {
+      "path": "crypto.symmetric.key_size",
+      "layer": "L3",
+      "data_type": "string",
+      "allowed_values": "int(40-512)|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Core",
+      "derives_from": null,
+      "description": "대칭키 길이(bit)"
+    },
+    {
+      "path": "crypto.symmetric.block_mode",
+      "layer": "L3",
+      "data_type": "enum",
+      "allowed_values": "CBC|CTR|GCM|ECB|CFB|OFB|XOR-Stream|None|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Core",
+      "derives_from": null,
+      "description": "블록 암호 운용 모드"
+    },
+    {
+      "path": "crypto.asymmetric.algorithm",
+      "layer": "L3",
+      "data_type": "list<string>",
+      "allowed_values": "json-array of RSA|ECC-Curve25519|ECC-Other|None|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Core",
+      "derives_from": null,
+      "description": "비대칭키 알고리즘 (복수 구현 시 모두 기재)"
+    },
+    {
+      "path": "crypto.asymmetric.key_size",
+      "layer": "L3",
+      "data_type": "string",
+      "allowed_values": "int(256-8192)|None|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Core",
+      "derives_from": null,
+      "description": "비대칭키 길이(bit) (asymmetric.algorithm=None 이면 None)"
+    },
+    {
+      "path": "crypto.scheme.architecture",
+      "layer": "L3",
+      "data_type": "enum",
+      "allowed_values": "Pure-Symmetric|Hybrid|Envelope|Custom|Undetermined|Not-Analyzed",
+      "requirement": "Required",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "암호 원시함수의 조합 구조(대칭 단독인가 비대칭과 결합인가)"
+    },
+    {
+      "path": "crypto.workflow.type",
+      "layer": "L3",
+      "data_type": "enum",
+      "allowed_values": "Single-Stage|Two-Stage|Multi-Stage|Undetermined|Not-Analyzed",
+      "requirement": "Required",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "암호화 실행 단계 수(키 유도·래핑을 포함한 처리 단계)"
+    },
+    {
+      "path": "crypto.custom_implementation.present",
+      "layer": "L3",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "자체 구현 암호 사용 여부"
+    },
+    {
+      "path": "crypto.library.name",
+      "layer": "L3",
+      "data_type": "enum",
+      "allowed_values": "CryptoAPI|CNG|OpenSSL|Libsodium|CryptoPP|Custom|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "사용 암호 라이브러리"
+    },
+    {
+      "path": "crypto.random_number_generator.source",
+      "layer": "L3",
+      "data_type": "enum",
+      "allowed_values": "CSPRNG-WinAPI|Libc-Rand|Time-Based|Tick-Based|Custom-PRNG|Hardware|Undetermined|Not-Analyzed",
+      "requirement": "Required",
+      "tier": "Core",
+      "derives_from": null,
+      "description": "난수 생성 출처"
+    },
+    {
+      "path": "crypto.random_number_generator.seed_source",
+      "layer": "L3",
+      "data_type": "enum",
+      "allowed_values": "OS-Managed|SystemTime|TickCount|ProcessId|ThreadId|HardwareRNG|UserInput|Hardcoded|Composite|None|Undetermined|Not-Analyzed",
+      "requirement": "Conditional",
+      "tier": "Core",
+      "derives_from": null,
+      "description": "난수 시드 출처 (OS CSPRNG 사용 시 OS-Managed)"
+    },
+    {
+      "path": "crypto.random_number_generator.algorithm",
+      "layer": "L3",
+      "data_type": "enum",
+      "allowed_values": "MT19937|LCG|Xorshift|RC4-PRGA|CTR-DRBG|Hash-DRBG|Platform-CSPRNG|Custom|None|Undetermined|Not-Analyzed",
+      "requirement": "Conditional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "난수 생성 알고리즘"
+    },
+    {
+      "path": "crypto.random_number_generator.applied_to",
+      "layer": "L3",
+      "data_type": "list<string>",
+      "allowed_values": "json-array",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "난수 적용 대상(키·IV·솔트 등)"
+    },
+    {
+      "path": "crypto.random_number_generator.function",
+      "layer": "L3",
+      "data_type": "json",
+      "allowed_values": "crypto_function[]",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "난수 생성 함수"
+    },
+    {
+      "path": "crypto.random_number_generator.reseeding",
+      "layer": "L3",
+      "data_type": "enum",
+      "allowed_values": "Per-File|Per-Session|Once|None|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "재시드 주기"
+    },
+    {
+      "path": "crypto.key.scope",
+      "layer": "L3",
+      "data_type": "enum",
+      "allowed_values": "Per-File|Per-Victim|Per-Campaign|Global-Hardcoded|Undetermined|Not-Analyzed",
+      "requirement": "Required",
+      "tier": "Core",
+      "derives_from": null,
+      "description": "키 적용 범위"
+    },
+    {
+      "path": "crypto.key.wrapping",
+      "layer": "L3",
+      "data_type": "enum",
+      "allowed_values": "RSA-Wrapped|ECC-Wrapped|Plaintext|Custom|None|Undetermined|Not-Analyzed",
+      "requirement": "Required",
+      "tier": "Core",
+      "derives_from": null,
+      "description": "키 래핑 방식"
+    },
+    {
+      "path": "crypto.key.reuse",
+      "layer": "L3",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Conditional",
+      "tier": "Core",
+      "derives_from": null,
+      "description": "키 재사용 설계 여부"
+    },
+    {
+      "path": "crypto.key.generation_function",
+      "layer": "L3",
+      "data_type": "json",
+      "allowed_values": "crypto_function[]",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "키 생성 함수"
+    },
+    {
+      "path": "crypto.key.wrapping_sequence",
+      "layer": "L3",
+      "data_type": "string",
+      "allowed_values": "e.g. AES->RSA",
+      "requirement": "Optional",
+      "tier": "Core",
+      "derives_from": null,
+      "description": "키 래핑 순서"
+    },
+    {
+      "path": "crypto.key.storage_location",
+      "layer": "L3",
+      "data_type": "enum",
+      "allowed_values": "Header|Footer|Note|Registry|C2|Sidecar|Metadata|Hardcoded|None|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Core",
+      "derives_from": null,
+      "description": "암호화 파일 내 키 저장 위치"
+    },
+    {
+      "path": "crypto.session_key.generation",
+      "layer": "L3",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "세션키 별도 생성 여부"
+    },
+    {
+      "path": "crypto.file_key.present",
+      "layer": "L3",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "파일별 키 생성 여부"
+    },
+    {
+      "path": "crypto.victim_key.present",
+      "layer": "L3",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "피해자별 키 생성 여부"
+    },
+    {
+      "path": "crypto.iv.method",
+      "layer": "L3",
+      "data_type": "enum",
+      "allowed_values": "Random-CSPRNG|Static|Reused|Counter|Derived|None|Undetermined|Not-Analyzed",
+      "requirement": "Required",
+      "tier": "Core",
+      "derives_from": null,
+      "description": "초기화 벡터 생성 방식"
+    },
+    {
+      "path": "crypto.iv.function",
+      "layer": "L3",
+      "data_type": "json",
+      "allowed_values": "crypto_function[]",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "초기화 벡터 생성 함수"
+    },
+    {
+      "path": "crypto.iv.storage_location",
+      "layer": "L3",
+      "data_type": "enum",
+      "allowed_values": "Header|Footer|Note|Registry|C2|Sidecar|Metadata|Hardcoded|None|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "초기화 벡터 저장 위치"
+    },
+    {
+      "path": "crypto.kdf.present",
+      "layer": "L3",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Core",
+      "derives_from": null,
+      "description": "파일 암호화 키를 KDF 로 유도하는지 여부 (CSPRNG 로 키를 직접 생성하면 No. 키 래핑 내부의 공유비밀 변환은 이 필드의 대상이 아님)"
+    },
+    {
+      "path": "crypto.kdf.algorithm",
+      "layer": "L3",
+      "data_type": "enum",
+      "allowed_values": "PBKDF2|HKDF|Argon2|Bcrypt|Custom|None|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "키 유도 함수 알고리즘 (kdf.present=No 이면 None)"
+    },
+    {
+      "path": "crypto.kdf.iteration_count",
+      "layer": "L3",
+      "data_type": "string",
+      "allowed_values": "int(0+)|None|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "키 유도 반복 횟수 (kdf.present=No 이면 None)"
+    },
+    {
+      "path": "crypto.kdf.salt_source",
+      "layer": "L3",
+      "data_type": "enum",
+      "allowed_values": "Random|Static|Hardcoded|None|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "키 유도 솔트 출처 (kdf.present=No 이면 None)"
+    },
+    {
+      "path": "crypto.kdf.output_size",
+      "layer": "L3",
+      "data_type": "string",
+      "allowed_values": "int(bits)|None|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "키 유도 출력 길이(bit) (kdf.present=No 이면 None)"
+    },
+    {
+      "path": "crypto.encryption.extent",
+      "layer": "L3",
+      "data_type": "list<string>",
+      "allowed_values": "json-array of Full|Partial|Intermittent|Header-Only|None|Undetermined|Not-Analyzed",
+      "requirement": "Required",
+      "tier": "Core",
+      "derives_from": null,
+      "description": "파일 내 암호화 범위 (크기 구간마다 다르면 관측된 방식을 모두 기재)"
+    },
+    {
+      "path": "crypto.encryption.size_policy",
+      "layer": "L3",
+      "data_type": "list<string>",
+      "allowed_values": "json-array|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "파일 크기 구간별 암호화 정책(임계값·청크 크기·간격). 복구 도구가 복호 대상 바이트 범위를 계산하는 근거"
+    },
+    {
+      "path": "crypto.file_marker.pattern",
+      "layer": "L3",
+      "data_type": "string",
+      "allowed_values": "free-text",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "암호화 파일 식별 마커"
+    },
+    {
+      "path": "crypto.original_size.preserved",
+      "layer": "L3",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "원본 파일 크기 유지 여부"
+    },
+    {
+      "path": "crypto.metadata.storage_location",
+      "layer": "L3",
+      "data_type": "enum",
+      "allowed_values": "Header|Footer|Note|Registry|C2|Sidecar|Metadata|Hardcoded|None|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": null,
+      "description": "암호 메타데이터 저장 위치"
+    },
+    {
+      "path": "family.name",
+      "layer": "L4",
+      "data_type": "string",
+      "allowed_values": "free-text",
+      "requirement": "Conditional",
+      "tier": "Extended",
+      "derives_from": "ransom_note.template.id; crypto.file_marker.pattern",
+      "description": "랜섬웨어 패밀리명 (판정: 노트 템플릿과 암호화 파일 마커의 군집)"
+    },
+    {
+      "path": "family.confidence",
+      "layer": "L4",
+      "data_type": "enum",
+      "allowed_values": "High|Medium|Low|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": "ransom_note.file.name; ransom_note.template.id; crypto.file_marker.pattern",
+      "description": "패밀리 판정 신뢰도 (판정: 일치한 식별 증거의 개수와 고유성)"
+    },
+    {
+      "path": "family.variant",
+      "layer": "L4",
+      "data_type": "string",
+      "allowed_values": "free-text",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": "crypto.file_marker.pattern",
+      "description": "변종 식별자 (판정)"
+    },
+    {
+      "path": "family.builder.lineage",
+      "layer": "L4",
+      "data_type": "enum",
+      "allowed_values": "Babuk-Leaked|Conti-Leaked|Thanos|Chaos|None|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": "crypto.scheme.architecture",
+      "description": "빌더 계보 추정 (암호 구조·스킴 유사성이 관측되면 빌더 계보를 시사할 수 있으나, 실제 코드 계보를 단정하지 않는다; 확정은 유출 빌더·소스 증거가 있을 때로 한정)"
+    },
+    {
+      "path": "family.timeline.first_seen",
+      "layer": "L4",
+      "data_type": "string",
+      "allowed_values": "ISO-8601 date | Undetermined | Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": "None",
+      "description": "변종 최초 관측일 (외부 조회, ISO-8601)"
+    },
+    {
+      "path": "family.timeline.evidence",
+      "layer": "L4",
+      "data_type": "enum",
+      "allowed_values": "VT-first-seen|compile-timestamp|builder-leak-date|public-report|None|Undetermined|Not-Analyzed",
+      "requirement": "Conditional",
+      "tier": "Extended",
+      "derives_from": "None",
+      "description": "시점 근거의 종류 (first_seen 이 있을 때 필수)"
+    },
+    {
+      "path": "weakness.weak_rng.detected",
+      "layer": "L4",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Conditional",
+      "tier": "Core",
+      "derives_from": "crypto.random_number_generator.source; crypto.random_number_generator.algorithm",
+      "description": "취약 난수 생성기 탐지 여부 (판정: 난수출처·알고리즘이 암호학적 안전성을 갖지 못함)"
+    },
+    {
+      "path": "weakness.predictable_seed.detected",
+      "layer": "L4",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Conditional",
+      "tier": "Core",
+      "derives_from": "crypto.random_number_generator.source; crypto.random_number_generator.seed_source",
+      "description": "예측 가능 시드 탐지 여부 (판정: 시드출처가 시각·틱·PID 등 관측 가능한 값)"
+    },
+    {
+      "path": "weakness.hardcoded_key.detected",
+      "layer": "L4",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Conditional",
+      "tier": "Core",
+      "derives_from": "crypto.key.storage_location; crypto.key.scope",
+      "description": "하드코딩 키 탐지 여부 (판정: 저장위치=Hardcoded 또는 키범위=Global-Hardcoded)"
+    },
+    {
+      "path": "weakness.static_iv.detected",
+      "layer": "L4",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Core",
+      "derives_from": "crypto.iv.method",
+      "description": "고정 초기화 벡터 탐지 여부 (판정: IV방식∈{Static, Reused})"
+    },
+    {
+      "path": "weakness.key_reuse.detected",
+      "layer": "L4",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Core",
+      "derives_from": "crypto.key.reuse; crypto.key.scope",
+      "description": "키 재사용 취약점 탐지 여부 (판정: 재사용=Yes 또는 키범위∈{Per-Campaign, Global-Hardcoded})"
+    },
+    {
+      "path": "weakness.custom_implementation.risk_level",
+      "layer": "L4",
+      "data_type": "enum",
+      "allowed_values": "Low|Medium|High|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Core",
+      "derives_from": "crypto.custom_implementation.present; crypto.random_number_generator.algorithm",
+      "description": "자체 구현 암호 위험 등급 (판정: 자체구현 여부 × 난수 알고리즘 건전성)"
+    },
+    {
+      "path": "crypto.known_plaintext.availability",
+      "layer": "L4",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Core",
+      "derives_from": "candidate_observed = Yes → Yes; else Undetermined. (crypto.encryption.extent ∈ {Partial,Intermittent,Header-Only} is only a search cue that a candidate MAY exist; it does not by itself yield Yes)",
+      "description": "기지 평문 '후보' 존재 여부. Yes는 known-plaintext 후보가 존재할 가능성을 의미하며(candidate-present), 공격에 사용 가능한 평문의 실제 확보(acquisition)를 의미하지 않는다. 실제 확보 여부는 복구 전제조건의 candidate_verifiable 상태에서 별도로 판정한다"
+    },
+    {
+      "path": "recovery.method.class",
+      "layer": "L4",
+      "data_type": "enum",
+      "allowed_values": "Weak-RNG|Hardcoded-Key|Key-Reuse|Static-IV|Memory-Key|KDF-Weakness|None|Undetermined|Not-Analyzed",
+      "requirement": "Conditional",
+      "tier": "Core",
+      "derives_from": "weakness.hardcoded_key.detected; weakness.weak_rng.detected; weakness.key_reuse.detected; weakness.static_iv.detected; crypto.random_number_generator.applied_to",
+      "description": "복구 방식 유형 (판정: 하드코딩키 > 취약RNG > 키재사용 > 고정IV 순 최초 일치. 취약RNG 는 난수가 키 계열에 적용된 경우에 한함)"
+    },
+    {
+      "path": "recovery.method.required_artifacts",
+      "layer": "L4",
+      "data_type": "list<string>",
+      "allowed_values": "json-array",
+      "requirement": "Optional",
+      "tier": "Core",
+      "derives_from": "recovery.method.class",
+      "description": "복구 필요 아티팩트 목록 (판정)"
+    },
+    {
+      "path": "recovery.method.required_conditions",
+      "layer": "L4",
+      "data_type": "json",
+      "allowed_values": "object: {condition: {status: Confirmed|Not-Confirmed|Undetermined, evidence: text}}",
+      "requirement": "Optional",
+      "tier": "Core",
+      "derives_from": "recovery.method.class",
+      "description": "복구 전제조건의 구조화된 상태 (각 암호학적 조건별 status와 evidence 식별자). 분석자 서술이 아니라 조건별 충족 상태를 명시"
+    },
+    {
+      "path": "recovery.keyspace.exponent",
+      "layer": "L4",
+      "data_type": "string",
+      "allowed_values": "int(0-512)|Undetermined|Not-Analyzed",
+      "requirement": "Optional",
+      "tier": "Core",
+      "derives_from": "crypto.random_number_generator.seed_source; crypto.random_number_generator.algorithm; crypto.random_number_generator.reseeding; crypto.symmetric.key_size; crypto.kdf.iteration_count",
+      "description": "탐색 키 공간 지수 n (판정: 시드 공간과 재시드 주기, 그 외에는 대칭키 길이)"
+    },
+    {
+      "path": "recovery.bruteforce.feasibility",
+      "layer": "L4",
+      "data_type": "enum",
+      "allowed_values": "Immediate|Conditional|No|Undetermined|Not-Analyzed",
+      "requirement": "Conditional",
+      "tier": "Core",
+      "derives_from": "recovery.keyspace.exponent",
+      "description": "브루트포스 실현 가능 여부 (Immediate: keyspace<=T1, Conditional: T1<keyspace<=T3, No: keyspace>T3; T1=40,T3=64, R_verify 가정 하 예시 프로파일)"
+    },
+    {
+      "path": "recovery.seed.feasibility",
+      "layer": "L4",
+      "data_type": "enum",
+      "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
+      "requirement": "Conditional",
+      "tier": "Core",
+      "derives_from": "weakness.predictable_seed.detected; recovery.keyspace.exponent",
+      "description": "시드 복구 실현 가능 여부 (판정: 시드 예측 가능 & 키공간 지수 <= 48)"
+    },
+    {
+      "path": "recovery.assessment.class",
+      "layer": "L4",
+      "data_type": "enum",
+      "allowed_values": "Full|Partial|Keyspace-Reduced|Infeasible|Undetermined|Not-Analyzed",
+      "requirement": "Conditional",
+      "tier": "Core",
+      "derives_from": "recovery.method.class; recovery.bruteforce.feasibility; recovery.seed.feasibility",
+      "description": "복구 가능성 등급 (Full/Partial/Keyspace-Reduced/Infeasible). Infeasible은 수학적 불가능이 아니라 관측 범위 내에서 알려진 복구 경로가 없음(no known recovery path within observed scope)을 의미한다"
+    },
+    {
+      "path": "recovery.assessment.evidence_completeness",
+      "layer": "L4",
+      "data_type": "enum",
+      "allowed_values": "Complete|Partial|Insufficient|Undetermined|Not-Analyzed",
+      "requirement": "Conditional",
+      "tier": "Core",
+      "derives_from": "recovery.method.class; recovery.bruteforce.feasibility; recovery.seed.feasibility",
+      "description": "복구 판정의 근거 완전성 (판정: 근거 관찰 필드 중 확정값 비율. 핵심 근거가 결손이면 Insufficient)"
+    },
+    {
+      "path": "recovery.assessment.confidence",
+      "layer": "L4",
+      "data_type": "enum",
+      "allowed_values": "High|Medium|Low|Undetermined|Not-Analyzed",
+      "requirement": "Conditional",
+      "tier": "Core",
+      "derives_from": "recovery.assessment.evidence_completeness; evidence.source",
+      "description": "복구 가능성 판정 신뢰도 (판정: 근거 완전성 × 근거의 직접성)"
+    },
+    {
+      "path": "summary.verdict",
+      "layer": "L4",
+      "data_type": "string",
+      "allowed_values": "free-text",
+      "requirement": "Conditional",
+      "tier": "Extended",
+      "derives_from": "family.name; recovery.assessment.class",
+      "description": "종합 판정 요약 (판정: 패밀리와 복구 등급을 한 문장으로 직렬화)"
+    },
+    {
+      "path": "summary.key_findings",
+      "layer": "L4",
+      "data_type": "string",
+      "allowed_values": "free-text",
+      "requirement": "Optional",
+      "tier": "Extended",
+      "derives_from": "recovery.method.class; recovery.assessment.class",
+      "description": "핵심 발견 목록 (판정: 탐지된 약점과 복구 경로를 배열로 수집)"
+    }
+  ]
+}

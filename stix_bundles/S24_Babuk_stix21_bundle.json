@@ -1,0 +1,201 @@
+{
+  "type": "bundle",
+  "id": "bundle--a5a82390-70bb-58ff-8736-54ff02c7d67f",
+  "objects": [
+    {
+      "type": "identity",
+      "spec_version": "2.1",
+      "id": "identity--eb60712b-6ecd-5e3c-8936-671fb59423a7",
+      "created": "2026-10-23T00:00:00.000Z",
+      "modified": "2026-10-23T00:00:00.000Z",
+      "name": "This-Study",
+      "identity_class": "individual"
+    },
+    {
+      "type": "malware",
+      "spec_version": "2.1",
+      "id": "malware--5dba6da9-6c74-5cf2-bb96-e0e0da58829f",
+      "created": "2026-10-23T00:00:00.000Z",
+      "modified": "2026-10-23T00:00:00.000Z",
+      "name": "Babuk",
+      "is_family": true,
+      "first_seen": "2021-01",
+      "extensions": {
+        "extension-definition--3eb39a3e-9c45-5adb-ba1c-997ad6ad2b69": {
+          "extension_type": "property-extension",
+          "meta_schema_version": "RCMS-1.0",
+          "meta_record_id": "S24",
+          "meta_source_dataset": "user-provided sample",
+          "sample_target_platform": "Windows",
+          "family_confidence": "High",
+          "family_variant": "2020-original",
+          "family_builder_lineage": "Babuk-Leaked",
+          "family_timeline_evidence": "compile-timestamp"
+        }
+      }
+    },
+    {
+      "type": "indicator",
+      "spec_version": "2.1",
+      "id": "indicator--d41b27a9-c129-5068-82f5-6157ef72a9dd",
+      "created": "2026-10-23T00:00:00.000Z",
+      "modified": "2026-10-23T00:00:00.000Z",
+      "pattern_type": "stix",
+      "pattern": "[file:hashes.'SHA-256' = '00abad557820edf9bbc0e848f875966ff28be6979f7ce5c1ebd27180689d1b79']",
+      "valid_from": "2026-10-23T00:00:00.000Z"
+    },
+    {
+      "type": "file",
+      "spec_version": "2.1",
+      "id": "file--7c231823-f8e0-5bc1-b83c-ff09e9ce0b5f",
+      "hashes": {
+        "SHA-256": "00abad557820edf9bbc0e848f875966ff28be6979f7ce5c1ebd27180689d1b79",
+        "MD5": "b1ba186a8e87ae28ef55a7a95a4cd41b"
+      },
+      "extensions": {
+        "extension-definition--3eb39a3e-9c45-5adb-ba1c-997ad6ad2b69": {
+          "extension_type": "property-extension",
+          "sample_file_type": "PE",
+          "sample_target_platform": "Windows",
+          "sample_hash_import_hash": "a07d82bc384cbae972c1524ff6fb5cc1",
+          "sample_compile_timestamp": "2020-12-30T00:00:00Z"
+        }
+      }
+    },
+    {
+      "type": "artifact",
+      "spec_version": "2.1",
+      "id": "artifact--d0b3c750-8c72-5c26-8f4e-f32f7e618e26",
+      "mime_type": "application/octet-stream",
+      "hashes": {
+        "SHA-256": "00abad557820edf9bbc0e848f875966ff28be6979f7ce5c1ebd27180689d1b79"
+      },
+      "extensions": {
+        "extension-definition--3eb39a3e-9c45-5adb-ba1c-997ad6ad2b69": {
+          "extension_type": "property-extension",
+          "crypto_symmetric_algorithm": "[\"ChaCha20\"]",
+          "crypto_symmetric_key_size": "256",
+          "weakness_weak_rng_detected": "No",
+          "weakness_predictable_seed_detected": "No",
+          "weakness_hardcoded_key_detected": "No"
+        }
+      }
+    },
+    {
+      "type": "note",
+      "spec_version": "2.1",
+      "id": "note--646b040b-95ae-5451-bcf7-c6103eb37302",
+      "created": "2026-10-23T00:00:00.000Z",
+      "modified": "2026-10-23T00:00:00.000Z",
+      "content": "Ransom note file: How To Restore Your Files.txt",
+      "object_refs": [
+        "malware--5dba6da9-6c74-5cf2-bb96-e0e0da58829f"
+      ],
+      "extensions": {
+        "extension-definition--3eb39a3e-9c45-5adb-ba1c-997ad6ad2b69": {
+          "extension_type": "property-extension",
+          "ransom_note_present": "Yes",
+          "ransom_note_language": "EN",
+          "ransom_note_template_id": "Undetermined",
+          "payment_contact": "http://babukq4e2p4wu4iq.onion/login.php?id=8M60J4vCbbkKgM6QnA07E9qpkn0Qk7",
+          "payment_method": "Undetermined",
+          "payment_victim_id_present": "Yes",
+          "payment_victim_id_format": "Custom"
+        }
+      }
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--97f13a96-70e3-5c5e-bf78-2fcaa256b570",
+      "created": "2026-10-23T00:00:00.000Z",
+      "modified": "2026-10-23T00:00:00.000Z",
+      "name": "Inhibit System Recovery",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1490"
+        }
+      ],
+      "extensions": {
+        "extension-definition--3eb39a3e-9c45-5adb-ba1c-997ad6ad2b69": {
+          "extension_type": "property-extension",
+          "impact_shadow_copy_deletion": "Yes",
+          "impact_backup_deletion": "Yes",
+          "impact_process_termination": "Yes",
+          "impact_event_log_deletion": "No",
+          "impact_service_termination": "Yes",
+          "impact_safe_mode_modification": "No"
+        }
+      }
+    },
+    {
+      "type": "attack-pattern",
+      "spec_version": "2.1",
+      "id": "attack-pattern--6f95c4a9-288c-5cb9-9baa-937afe4dd7ca",
+      "created": "2026-10-23T00:00:00.000Z",
+      "modified": "2026-10-23T00:00:00.000Z",
+      "name": "Lateral Movement",
+      "external_references": [
+        {
+          "source_name": "mitre-attack",
+          "external_id": "T1021"
+        }
+      ],
+      "extensions": {
+        "extension-definition--3eb39a3e-9c45-5adb-ba1c-997ad6ad2b69": {
+          "extension_type": "property-extension",
+          "impact_lateral_movement_present": "Yes",
+          "impact_smb_present": "Yes",
+          "impact_psexec_present": "No",
+          "impact_worm_capability_present": "Undetermined",
+          "impact_active_directory_enumeration": "No"
+        }
+      }
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--d4595b9d-3981-574b-af9d-2a0f3e3333d0",
+      "created": "2026-10-23T00:00:00.000Z",
+      "modified": "2026-10-23T00:00:00.000Z",
+      "relationship_type": "indicates",
+      "source_ref": "indicator--d41b27a9-c129-5068-82f5-6157ef72a9dd",
+      "target_ref": "malware--5dba6da9-6c74-5cf2-bb96-e0e0da58829f"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--453f1385-0897-53ea-b534-5d5ca0710811",
+      "created": "2026-10-23T00:00:00.000Z",
+      "modified": "2026-10-23T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "malware--5dba6da9-6c74-5cf2-bb96-e0e0da58829f",
+      "target_ref": "attack-pattern--97f13a96-70e3-5c5e-bf78-2fcaa256b570"
+    },
+    {
+      "type": "relationship",
+      "spec_version": "2.1",
+      "id": "relationship--25a14c3c-cbcf-5610-952c-2ef3f2117108",
+      "created": "2026-10-23T00:00:00.000Z",
+      "modified": "2026-10-23T00:00:00.000Z",
+      "relationship_type": "uses",
+      "source_ref": "malware--5dba6da9-6c74-5cf2-bb96-e0e0da58829f",
+      "target_ref": "attack-pattern--6f95c4a9-288c-5cb9-9baa-937afe4dd7ca"
+    },
+    {
+      "type": "extension-definition",
+      "spec_version": "2.1",
+      "id": "extension-definition--3eb39a3e-9c45-5adb-ba1c-997ad6ad2b69",
+      "created": "2026-10-23T00:00:00.000Z",
+      "modified": "2026-10-23T00:00:00.000Z",
+      "created_by_ref": "identity--eb60712b-6ecd-5e3c-8936-671fb59423a7",
+      "name": "RCMS v1.0 property extension",
+      "schema": "https://example.org/rcms/v1.0/schema.json",
+      "version": "1.0",
+      "extension_types": [
+        "property-extension"
+      ]
+    }
+  ]
+}

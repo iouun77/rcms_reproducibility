@@ -1,0 +1,37 @@
+{
+  "study": "Inter-annotator agreement (preliminary reproducibility check)",
+  "samples": [
+    "S11",
+    "S4",
+    "S10",
+    "S3",
+    "S5"
+  ],
+  "note": "Four independent LLM-based agents (anonymized as Agent A-D) re-annotated under identical static evidence; expert single annotation is ground truth. Agents A-C performed static analysis and form the primary quantitative comparison; Agent D could not perform analysis in its hosting environment and is reported separately as an environment-constraint case. Concrete model names/versions are intentionally not disclosed.",
+  "agents": {
+    "Agent A": {
+      "overall_kappa": 0.7,
+      "L3_kappa": 0.71,
+      "analysis": "performed"
+    },
+    "Agent B": {
+      "overall_kappa": 0.71,
+      "L3_kappa": 0.71,
+      "analysis": "performed"
+    },
+    "Agent C": {
+      "overall_kappa": 0.5,
+      "L3_kappa": 0.51,
+      "analysis": "performed (conservative: leaves uncertain fields undetermined)"
+    },
+    "Agent D": {
+      "overall_kappa": 0.06,
+      "analysis": "declined (could not perform static analysis in hosting environment)"
+    }
+  },
+  "agent_to_agent_L3": {
+    "A_vs_B": 0.76,
+    "A_vs_C": 0.52,
+    "B_vs_C": 0.53
+  }
+}

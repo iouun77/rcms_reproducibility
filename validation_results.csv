@@ -1,0 +1,25 @@
+sample_id,family,method_class,keyspace_exponent,bruteforce,assessment,verification_status
+S1,Weaxor,None,256,No,Infeasible,rule-derived
+S2,EndPoint,Key-Reuse,0,No,Full,conditional (public analysis)
+S3,GandCrab,None,256,No,Infeasible,rule-derived
+S4,Phobos,Weak-RNG,0,No,Partial,rule-derived
+S5,BlackHunt,None,256,No,Infeasible,rule-derived
+S6,Sodinokibi,None,256,No,Infeasible,rule-derived
+S7,Trigona,None,256,No,Infeasible,rule-derived
+S8,LockBit,None,128,No,Infeasible,rule-derived
+S9,Rhysida,Weak-RNG,32,Immediate,Full,conditional (public analysis)
+S10,WannaCry,Memory-Key,Undetermined,Undetermined,Partial,rule-derived
+S11,Xorist,Hardcoded-Key,0,No,Full,conditional (public analysis)
+S12,Magniber,Weak-RNG,Undetermined,Undetermined,Partial,rule-derived
+S13,Conti,None,256,No,Infeasible,rule-derived
+S14,Pysa,None,256,No,Infeasible,rule-derived
+S15,Cerber,None,Undetermined,Undetermined,Infeasible,rule-derived
+S16,Medusa,None,256,No,Infeasible,rule-derived
+S17,Akira,None,256,No,Infeasible,rule-derived
+S18,BlackCat,None,256,No,Infeasible,rule-derived
+S19,Ryuk,None,256,No,Infeasible,rule-derived
+S20,Play,None,256,No,Infeasible,rule-derived
+S21,Clop,None,256,No,Infeasible,rule-derived
+S22,INC,None,256,No,Infeasible,rule-derived
+S23,Cactus,None,256,No,Infeasible,rule-derived
+S24,Babuk,Key-Reuse,None,Undetermined,Full,conditional (public analysis)
