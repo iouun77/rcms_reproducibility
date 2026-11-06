@@ -49,6 +49,12 @@ f_part=rec(**{"weakness.hardcoded_key.detected":"Yes","recovery.keyspace.exponen
 T("assessment Full (prereq Confirmed)", derive_assessment(f_full), "Full")
 T("assessment Partial (prereq Undetermined)", derive_assessment(f_part), "Partial")
 
+# --- Kleene three-valued propagation ---
+T("K3 OR: Yes with other Undetermined -> method selected", derive_method(rec(**{"weakness.key_reuse.detected":"Undetermined","weakness.weak_rng.detected":"Yes"})), "Weak-RNG")
+T("K3 OR: all No except one Undetermined -> Undetermined (not None)", derive_method(rec(**{"weakness.hardcoded_key.detected":"No","weakness.key_reuse.detected":"No","weakness.weak_rng.detected":"No","weakness.predictable_seed.detected":"No","weakness.static_iv.detected":"Undetermined"})), "Undetermined")
+T("K3: Undetermined method -> assessment Undetermined", derive_assessment(rec(**{"weakness.hardcoded_key.detected":"No","weakness.key_reuse.detected":"No","weakness.weak_rng.detected":"No","weakness.predictable_seed.detected":"No","weakness.static_iv.detected":"Undetermined","recovery.keyspace.exponent":"None"})), "Undetermined")
+
+
 if __name__=="__main__":
     passed=0
     for name,got,exp in tests:

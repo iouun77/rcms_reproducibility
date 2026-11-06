@@ -47,7 +47,14 @@
       "Undetermined",
       "Not-Analyzed"
     ],
-    "rule": "keyspace in {Undetermined,Not-Analyzed,None} -> Undetermined; keyspace==0 -> No (recovery is via method, not keyspace brute-force; entropy value and brute-force applicability are separated); 0<keyspace<=40 -> Immediate; 40<keyspace<=64 -> Conditional; keyspace>64 -> No"
+    "rule": "keyspace in {Undetermined,Not-Analyzed,None} -> Undetermined; keyspace==0 -> No (recovery is via method, not keyspace brute-force; entropy value and brute-force applicability are separated); 0<keyspace<=40 -> Immediate; 40<keyspace<=64 -> Conditional; keyspace>64 -> No",
+    "thresholds": {
+      "T1": 40,
+      "T2": 56,
+      "T3": 64,
+      "unit": "bits"
+    },
+    "keyspace_zero": "reserved value meaning 'no exhaustive-search target' (recovery via method path); not a 0-bit keyspace"
   },
   "assessment_class": {
     "allowed": [
@@ -66,6 +73,9 @@
   },
   "known_plaintext_availability": {
     "rule": "candidate_observed == Yes -> Yes; else Undetermined",
-    "cue_only": "encryption.extent in {Partial,Intermittent,Header-Only} AND ext.included == Yes is a search cue only; never yields Yes by itself"
-  }
+    "cue_only": "encryption.extent in {Partial,Intermittent,Header-Only} AND ext.included == Yes is a search cue only; never yields Yes by itself",
+    "semantics": "candidate-present only (observation cue). NOT an input to assessment_class. For Key-Reuse/Static-IV, required_conditions.candidate_verifiable=Confirmed means a concrete verification oracle (plaintext-ciphertext pair or known fixed header) is identified in the record; actual acquisition of a pair for a given victim is an operational condition at response time, outside the judgment."
+  },
+  "evaluation_order": "rules evaluated in listed order, first matching clause applies; method priority Hardcoded-Key > Key-Reuse > Weak-RNG > Memory-Key > Static-IV > None",
+  "three_valued_logic": "Kleene K3: True∨U=True; False∧U=False; ¬U=U; else U. Not-Analyzed ≺ Undetermined precedence (Eq. 4-5). method_class: max-priority confirmed indicator; if none confirmed and any indicator Undetermined -> Undetermined; assessment inherits Undetermined."
 }

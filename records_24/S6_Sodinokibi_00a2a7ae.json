@@ -103,16 +103,17 @@
     "weakness.key_reuse.detected": "No",
     "weakness.custom_implementation.risk_level": "Medium",
     "crypto.known_plaintext.availability": "No",
-    "recovery.method.class": "None",
+    "recovery.method.class": "Undetermined",
     "recovery.method.required_artifacts": "Undetermined",
     "recovery.method.required_conditions": "Undetermined",
     "recovery.keyspace.exponent": "256",
     "recovery.bruteforce.feasibility": "No",
     "recovery.seed.feasibility": "No",
-    "recovery.assessment.class": "Infeasible",
-    "recovery.assessment.evidence_completeness": "Complete",
-    "recovery.assessment.confidence": "High",
+    "recovery.assessment.class": "Undetermined",
+    "recovery.assessment.evidence_completeness": "Partial",
+    "recovery.assessment.confidence": "Medium",
     "summary.verdict": "UPX 패킹을 에뮬레이션으로 해제한 결과 Salsa20 과 Curve25519 를 함께 쓰는 NaCl 계열 자체 구현 암호가 확인되었다. 대칭 암호로 파일을 암호화하고 Curve25519 ECDH 로 키를 보호하는 구조로, 키 범위와 저장 위치는 미확정이다.",
-    "summary.key_findings": "언패킹 이미지에 Salsa20 sigma 두 종(expand 32/16-byte k)과 Curve25519 몽고메리 상수 121665 가 존재한다. 다만 언패킹이 불완전하여 이 상수를 사용하는 코드는 복원되지 않아 키 생애주기는 추적하지 못하였다."
+    "summary.key_findings": "언패킹 이미지에 Salsa20 sigma 두 종(expand 32/16-byte k)과 Curve25519 몽고메리 상수 121665 가 존재한다. 다만 언패킹이 불완전하여 이 상수를 사용하는 코드는 복원되지 않아 키 생애주기는 추적하지 못하였다.",
+    "recovery.assessment.summary": "Salsa20 with per-victim key; nonce/IV handling not determined, so keystream reuse cannot be excluded or confirmed (Static-IV indicator Undetermined). Judgment withheld under three-valued evaluation."
   }
 }

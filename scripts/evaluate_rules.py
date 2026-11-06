@@ -44,6 +44,10 @@ def derive_method(f):
     if get(f,"weakness.weak_rng.detected")=="Yes" or get(f,"weakness.predictable_seed.detected")=="Yes": return "Weak-RNG"
     if has_memory_evidence(f): return "Memory-Key"           # derived from observation
     if get(f,"weakness.static_iv.detected")=="Yes": return "Static-IV"
+    # Kleene three-valued OR: no indicator confirmed True, but at least one Undetermined -> Undetermined
+    inds=[get(f,k) for k in ("weakness.hardcoded_key.detected","weakness.key_reuse.detected","weakness.weak_rng.detected","weakness.predictable_seed.detected","weakness.static_iv.detected")]
+    if any(v=="Not-Analyzed" for v in inds): return "Not-Analyzed"
+    if any(v=="Undetermined" for v in inds): return "Undetermined"
     return "None"
 
 def prerequisites_met(f, method):
@@ -72,6 +76,7 @@ def derive_bruteforce(keyspace):
 def derive_assessment(f):
     method = derive_method(f)
     bf = derive_bruteforce(get(f,"recovery.keyspace.exponent"))
+    if method in ("Undetermined","Not-Analyzed"): return method   # judgment withheld (K3 propagation)
     if method!="None":
         return "Full" if prerequisites_met(f, method) else "Partial"
     if bf=="Conditional": return "Keyspace-Reduced"

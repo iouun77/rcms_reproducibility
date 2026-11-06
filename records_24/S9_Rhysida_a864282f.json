@@ -105,7 +105,7 @@
     "crypto.known_plaintext.availability": "Yes",
     "recovery.method.class": "Weak-RNG",
     "recovery.method.required_artifacts": "[\"file mtime\",\"encryption order model\"]",
-    "recovery.method.required_conditions": "{\"seed_observable\": {\"status\": \"Confirmed\", \"evidence\": \"SystemTime seed (32-bit) observed in import/code\"}, \"candidate_verifiable\": {\"status\": \"Confirmed\", \"evidence\": \"public recovery analysis [4]\"}}",
+    "recovery.method.required_conditions": "{\"seed_observable\": {\"status\": \"Confirmed\", \"evidence\": \"SystemTime seed (32-bit) observed in import/code\"}, \"candidate_verifiable\": {\"status\": \"Confirmed\", \"evidence\": \"public KISA decryptor for Rhysida (tool released by the authors, 2024); seed-search oracle demonstrated\"}}",
     "recovery.keyspace.exponent": "32",
     "recovery.bruteforce.feasibility": "Immediate",
     "recovery.seed.feasibility": "Yes",

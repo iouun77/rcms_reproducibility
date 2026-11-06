@@ -2,14 +2,29 @@ cff-version: 1.2.0
 message: "If you use this package, please cite the paper and this repository."
 title: "RCMS v1.0 Reproducibility Package: Ransomware Cryptographic Metadata Schema"
 version: 1.0.0
-date-released: 2026-10-23
+date-released: 2026-11-06
 license: MIT
 repository-code: "https://github.com/iouun77/rcms_reproducibility"
 authors:
-  - family-names: "[Family name]"
-    given-names: "[Given name]"
+  - family-names: "Kim"
+    given-names: "Kimoon"
+    affiliation: "Korea Internet & Security Agency (KISA); Korea University"
+    email: "kkm@kisa.or.kr"
+  - family-names: "Lee"
+    given-names: "Seunghyeon"
     affiliation: "Korea Internet & Security Agency (KISA)"
-    orcid: "https://orcid.org/0000-0000-0000-0000"
+  - family-names: "Cho"
+    given-names: "Jungsik"
+    affiliation: "Korea Internet & Security Agency (KISA)"
+  - family-names: "Lee"
+    given-names: "Dongryun"
+    affiliation: "Korea Internet & Security Agency (KISA)"
+  - family-names: "Park"
+    given-names: "Yongkyu"
+    affiliation: "Korea Internet & Security Agency (KISA)"
+  - family-names: "Kim"
+    given-names: "Heeseok"
+    affiliation: "Korea University"
 keywords:
   - ransomware
   - cryptography
@@ -22,5 +37,22 @@ preferred-citation:
   journal: "IEEE Access"
   year: 2026
   authors:
-    - family-names: "[Family name]"
-      given-names: "[Given name]"
+    - family-names: "Kim"
+      given-names: "Kimoon"
+      affiliation: "Korea Internet & Security Agency (KISA); Korea University"
+      email: "kkm@kisa.or.kr"
+    - family-names: "Lee"
+      given-names: "Seunghyeon"
+      affiliation: "Korea Internet & Security Agency (KISA)"
+    - family-names: "Cho"
+      given-names: "Jungsik"
+      affiliation: "Korea Internet & Security Agency (KISA)"
+    - family-names: "Lee"
+      given-names: "Dongryun"
+      affiliation: "Korea Internet & Security Agency (KISA)"
+    - family-names: "Park"
+      given-names: "Yongkyu"
+      affiliation: "Korea Internet & Security Agency (KISA)"
+    - family-names: "Kim"
+      given-names: "Heeseok"
+      affiliation: "Korea University"

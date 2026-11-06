@@ -1,28 +1,29 @@
 {
-  "E1_schema_validity": {
-    "checked": 2559,
-    "empty_gate": 33,
-    "total": 2592,
-    "type_violations": 0,
-    "enum_violations": 0,
-    "required_violations": 0,
-    "gate_violations": 0,
-    "note": "validates type, list-element, enum, required, and gate conditions"
-  },
-  "E2_rule_unit_tests": {
-    "total": 20,
-    "passed": 20,
-    "note": "structured prerequisites (status-based); includes anti-circular-reference test (fake method.class rejected)"
-  },
-  "rule_chain_consistency": {
-    "method_mismatches": 0,
-    "bruteforce_mismatches": 0,
-    "assessment_mismatches": 0,
-    "note": "full chain method->prerequisites->assessment reproduced for all 24 records"
-  },
-  "judgment_distribution": {
-    "Full": 4,
-    "Partial": 3,
-    "Infeasible": 17
-  }
+ "E1_schema_validity": {
+  "checked": 2559,
+  "empty_gate": 33,
+  "total": 2592,
+  "type_violations": 0,
+  "enum_violations": 0,
+  "required_violations": 0,
+  "gate_violations": 0,
+  "note": "validates type, list-element, enum, required, and gate conditions"
+ },
+ "E2_rule_unit_tests": {
+  "total": 23,
+  "passed": 23,
+  "note": "structured prerequisites (status-based); includes anti-circular-reference test (fake method.class rejected)"
+ },
+ "rule_chain_consistency": {
+  "method_mismatches": 0,
+  "bruteforce_mismatches": 0,
+  "assessment_mismatches": 0,
+  "note": "full chain method->prerequisites->assessment reproduced for all 24 records"
+ },
+ "judgment_distribution": {
+  "Full": 4,
+  "Partial": 3,
+  "Infeasible": 16,
+  "Undetermined": 1
+ }
 }

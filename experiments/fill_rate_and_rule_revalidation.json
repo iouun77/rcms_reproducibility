@@ -2,14 +2,22 @@
   "fill_rate_metrics_4": {
     "denominator": "applicable fields (total minus gate-inactive)",
     "Observation_Coverage": "72.0%",
-    "Determinate_Coverage": "77.9%",
-    "Unresolved_Rate": "22.1%",
+    "Determinate_Coverage": "77.8%",
+    "Unresolved_Rate": "20.8%",
     "Gate_inapplicable_Rate": "3.4%",
-    "note": "Determinate excludes gate-auto None; counts only analysis-confirmed absence. Eq.(6) layer-wise fill-rate is a separate depth-conditional metric with a different denominator."
+    "note": "Determinate excludes gate-auto None; counts only analysis-confirmed absence. Eq.(6) layer-wise fill-rate is a separate depth-conditional metric with a different denominator.",
+    "C_analysis": "98.6%",
+    "script": "scripts/compute_coverage.py (Eqs. 13-17, 20)",
+    "layer_fill_rate_eq20": {
+      "L1": "75.8%",
+      "L2": "52.9%",
+      "L3": "86.3%",
+      "L4": "94.8%"
+    }
   },
   "M1_rule_revalidation": {
     "change": "strengthened prerequisites (Hardcoded requires verified file-encryption key; Key-Reuse requires keystream reuse confirmed)",
-    "result": "judgment distribution: Full 4, Partial 3, Infeasible 17 (WannaCry corrected Keyspace-Reduced->Partial)",
+    "result": "judgment distribution: Full 4, Partial 3, Infeasible 16, Undetermined 1 (S6 withheld under three-valued evaluation) (WannaCry corrected Keyspace-Reduced->Partial)",
     "reason": "all prior Full samples actually satisfy the strengthened prerequisites"
   }
 }

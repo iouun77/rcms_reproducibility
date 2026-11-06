@@ -888,7 +888,7 @@
       "allowed_values": "ISO-8601 date | Undetermined | Not-Analyzed",
       "requirement": "Optional",
       "tier": "Extended",
-      "derives_from": "None",
+      "derives_from": "",
       "description": "변종 최초 관측일 (외부 조회, ISO-8601)"
     },
     {
@@ -898,7 +898,7 @@
       "allowed_values": "VT-first-seen|compile-timestamp|builder-leak-date|public-report|None|Undetermined|Not-Analyzed",
       "requirement": "Conditional",
       "tier": "Extended",
-      "derives_from": "None",
+      "derives_from": "",
       "description": "시점 근거의 종류 (first_seen 이 있을 때 필수)"
     },
     {
@@ -908,7 +908,7 @@
       "allowed_values": "Yes|No|Undetermined|Not-Analyzed",
       "requirement": "Conditional",
       "tier": "Core",
-      "derives_from": "crypto.random_number_generator.source; crypto.random_number_generator.algorithm",
+      "derives_from": "crypto.random_number_generator.source; crypto.random_number_generator.algorithm; crypto.random_number_generator.seed_source; weakness.predictable_seed.detected",
       "description": "취약 난수 생성기 탐지 여부 (판정: 난수출처·알고리즘이 암호학적 안전성을 갖지 못함)"
     },
     {
@@ -978,7 +978,7 @@
       "allowed_values": "Weak-RNG|Hardcoded-Key|Key-Reuse|Static-IV|Memory-Key|KDF-Weakness|None|Undetermined|Not-Analyzed",
       "requirement": "Conditional",
       "tier": "Core",
-      "derives_from": "weakness.hardcoded_key.detected; weakness.weak_rng.detected; weakness.key_reuse.detected; weakness.static_iv.detected; crypto.random_number_generator.applied_to",
+      "derives_from": "weakness.hardcoded_key.detected; weakness.weak_rng.detected; weakness.key_reuse.detected; weakness.static_iv.detected; crypto.random_number_generator.applied_to; evidence.artifacts; recovery.method.required_artifacts",
       "description": "복구 방식 유형 (판정: 하드코딩키 > 취약RNG > 키재사용 > 고정IV 순 최초 일치. 취약RNG 는 난수가 키 계열에 적용된 경우에 한함)"
     },
     {
@@ -988,8 +988,8 @@
       "allowed_values": "json-array",
       "requirement": "Optional",
       "tier": "Core",
-      "derives_from": "recovery.method.class",
-      "description": "복구 필요 아티팩트 목록 (판정)"
+      "derives_from": "",
+      "description": "복구 필요 아티팩트 목록 (판정) [Observation field: the set of conditions/artifacts to record is keyed by the recovery method, but each status (Confirmed/Not-Confirmed/Undetermined) and artifact is an analyst observation, not a derived value.]"
     },
     {
       "path": "recovery.method.required_conditions",
@@ -998,8 +998,8 @@
       "allowed_values": "object: {condition: {status: Confirmed|Not-Confirmed|Undetermined, evidence: text}}",
       "requirement": "Optional",
       "tier": "Core",
-      "derives_from": "recovery.method.class",
-      "description": "복구 전제조건의 구조화된 상태 (각 암호학적 조건별 status와 evidence 식별자). 분석자 서술이 아니라 조건별 충족 상태를 명시"
+      "derives_from": "",
+      "description": "복구 전제조건의 구조화된 상태 (각 암호학적 조건별 status와 evidence 식별자). 분석자 서술이 아니라 조건별 충족 상태를 명시 [Observation field: the set of conditions/artifacts to record is keyed by the recovery method, but each status (Confirmed/Not-Confirmed/Undetermined) and artifact is an analyst observation, not a derived value.]"
     },
     {
       "path": "recovery.keyspace.exponent",
@@ -1038,7 +1038,7 @@
       "allowed_values": "Full|Partial|Keyspace-Reduced|Infeasible|Undetermined|Not-Analyzed",
       "requirement": "Conditional",
       "tier": "Core",
-      "derives_from": "recovery.method.class; recovery.bruteforce.feasibility; recovery.seed.feasibility",
+      "derives_from": "recovery.method.class; recovery.bruteforce.feasibility; recovery.seed.feasibility; recovery.method.required_conditions",
       "description": "복구 가능성 등급 (Full/Partial/Keyspace-Reduced/Infeasible). Infeasible은 수학적 불가능이 아니라 관측 범위 내에서 알려진 복구 경로가 없음(no known recovery path within observed scope)을 의미한다"
     },
     {

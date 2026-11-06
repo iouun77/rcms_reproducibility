@@ -4,7 +4,7 @@ S2,EndPoint,Key-Reuse,0,No,Full,conditional (public analysis)
 S3,GandCrab,None,256,No,Infeasible,rule-derived
 S4,Phobos,Weak-RNG,0,No,Partial,rule-derived
 S5,BlackHunt,None,256,No,Infeasible,rule-derived
-S6,Sodinokibi,None,256,No,Infeasible,rule-derived
+S6,Sodinokibi,Undetermined,256,No,Undetermined,withheld (indicator Undetermined)
 S7,Trigona,None,256,No,Infeasible,rule-derived
 S8,LockBit,None,128,No,Infeasible,rule-derived
 S9,Rhysida,Weak-RNG,32,Immediate,Full,conditional (public analysis)
